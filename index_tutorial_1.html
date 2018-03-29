@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+       img {
+           width: 80%;
+           margin: 0px;
+       }
+
+       table {
+           width: 90%;
+           margin: 0 auto;
+       }
+
+       table td {
+           width: 20%;
+           word-wrap: break-word;
+       }
+
+       table td:nth-child(2) {
+           text-align: center;
+       }
+
+       pre {
+           display: block;
+           margin: 5px;
+           max-width: 300px;
+           word-break: break-all;
+           white-space: pre-wrap;
+       }
+   </style>
+</head>
+
+<body>
+   <div id="container">
+       <table border="1">
+           <thead>
+               <th><h1>人物ID/Person ID</h1></th>
+               <th><h1>备注/Person Note</h1></th>
+               <th><h1>图片/Image</h1></th>
+               <th><h1>数据/data</h1></th>
+               <th><h1>图片ID/Pic</h1></th>
+           </thead>
+       </table>
+   </div>
+
+   <script>
+       (function () {
+
+           // find the tag table
+           var table = document.querySelector('table');
+           // create new EventSource object for connecting to server.
+           // If request are success, we receive data and add new row to table with data from server
+           var evt = new EventSource('/stream');
+           var img = null;
+           var row = null;
+
+
+           // set handler onmessage event.
+           evt.onmessage = function (msg) {
+
+               msg = JSON.parse(msg.data);
+               var pic = msg.sensors[0].observs[0].pic;
+               var personNote = msg.personNote;
+
+               console.log(msg);
+ 
+               img = new Image();
+               img.src = `data:image/jpg;base64, ${msg.image}`;
+
+               var tr = document.createElement('tr');
+               var personIdCell = document.createElement('td');
+               var personNoteCell = document.createElement('td');
+               var imageCell = document.createElement('td');
+               var messageCell = document.createElement('td');
+               var picCell = document.createElement('td');
+
+            // Set the background to be green for government officers
+            // Set the background to be red for not welcomed persons.
+            
+               if(personNote === '不受欢迎/Not welcome')//bad person
+                    personNoteCell.setAttribute('bgcolor', "#FF0000");
+                else if(personNote === 'VIP')
+                    personNoteCell.setAttribute('bgcolor', "#008000");
+
+               imageCell.appendChild(img);                
+               msg.image = "base 64";
+
+               personIdCell.innerText = msg.sensors[0].observs[0].personId ? msg.sensors[0].observs[0].personId : '未注册/unregistered';
+              
+               
+               personNoteCell.innerHTML = '<h1>' + personNote + '</h1>';
+               messageCell.innerHTML = `<pre>${JSON.stringify(msg)}</pre>`;
+               picCell.innerHTML = `<pre>${JSON.stringify(pic)}</pre>`;
+
+               tr.appendChild(personIdCell);
+               tr.appendChild(personNoteCell);
+               tr.appendChild(imageCell);
+               tr.appendChild(messageCell);
+               tr.appendChild(picCell);
+               table.appendChild(tr);
+           };
+
+           evt.onerror = function (msg) {
+               console.log(msg);
+           };
+       })()
+
+   </script>
+</body>
+
+</html>
+
+
