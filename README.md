@@ -1,25 +1,21 @@
 # HOS-Tutorial_1
 This is the first tutorial using the APIs in the Initial Developer Rlease.
 
-###Setup
+### Setup
 
 This tutorial project has been tested on Ubuntu 16.04 LTS
-If you haven't installed Node.
-Please do so as follows.
+If you haven't installed Node or your Node.js isn't the latest, please do so as follows.
 ```bash
 $ sudo apt-get install nodejs
 $ sudo apt-get install npm
-$ sudo apt-get update
 
-$ sudo npm install npm@latest -g
-
-curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
-sudo apt-get install -y nodejs
+$ curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
+$ sudo apt-get install -y nodejs
 ```
 
 This process might take a long time.
 
-Check if your node version is the latest or not by:
+Check if your node version by:
 ```bash
 $ sudo node -v
 ```
