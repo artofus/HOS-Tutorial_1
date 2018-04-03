@@ -4,7 +4,7 @@
  * npm i request --save
  * npm i express --save
  * npm i eventsource --save
- * node alispeaker.js
+ * node tutorial_1.js
  *
  * Go to http://localhost:3001/index
  *
