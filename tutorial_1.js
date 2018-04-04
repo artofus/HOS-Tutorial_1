@@ -27,11 +27,11 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
 
-//@todo check npm on Baidu
-//@todo license
-//@todo readme.md
-// @todo change details
-// @todo config file for user info domain info
+//@todo check npm on Baidu      @res Tried and installed npm multiple times with new instances created
+//@todo license      @res The ISC license npm uses is 
+//@todo readme.md      @res Added readme file
+//@todo change details      @res Removed all instances of using the words 'Mouth' or 'Face' or related. 
+//@todo config file for user info domain info      @res Striped out the user info to the config.json file
 
 
 // Remove all instances of internal names like MOU or face. CO, MT, FF 
