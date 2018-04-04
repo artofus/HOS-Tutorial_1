@@ -55,6 +55,7 @@ const express = require('express');
 const EventSource = require('eventsource');
 
 const badPerson = '914f9d75_38ab_4987_86ae_779ff786b319';// Put bad guy's personId here
+//The html page will hightlight the cell when a bad guy is recognized
 
 const loginEndPoint = config.apiEndPoint.login;
 const streamEndPoint = config.apiEndPoint.stream;
@@ -64,7 +65,7 @@ const getImgEndPoint = config.apiEndPoint.getImg;
 const user_data = {
   username: config.userInfo.userName,
   password: config.userInfo.passWord,
-  jason: true,
+  json: true,
   requestAuthToken: true
 };
 console.log('Finish init');
