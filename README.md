@@ -37,9 +37,6 @@ Finally, please put the 3 files in this project into the same directory and run 
 ```bash
 $ node tutorial_1.js
 ```
-## Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## License
 This material is Copyright (c) 2018 Artofus and licensed under the MIT license. All rights not explicitly granted in the MIT license are reserved. See the [LICENSE.md](LICENSE.md) file for details
