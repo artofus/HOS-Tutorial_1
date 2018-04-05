@@ -1,9 +1,12 @@
 {
     "apiEndPoint" : {
         "login" : "https://mouth.hos-r1.cloud.artofushos.com/api/v1/login",
+        "stream" : "https://mouth.hos-r1.cloud.artofushos.com/api/v1/stream",
+        "getImg" : "https://face.hos-r1.cloud.artofushos.com/api/v1/face"
     },
     "userInfo" : {
         "userName" : "admin2@artofus.com",
         "passWord" : "admin2"
     }
+
 }

@@ -56,14 +56,13 @@ const streamEndPoint = config.apiEndPoint.stream;
 const getImgEndPoint = config.apiEndPoint.getImg;
 
 // object contains data for login in hos management
-const user_data = {
+const userData = {
   username: config.userInfo.userName,
   password: config.userInfo.passWord,
   json: true,
   requestAuthToken: true
 };
 console.log('Finish init');
-
 
 // setup application port
 var port = process.env.port || 3001;
@@ -79,7 +78,7 @@ app.get('/stream', function (req, res) {
 
   var promise = new Promise((resolve, reject) => {
     // The request to hos management for login user and get auth0_token
-    request.post(loginEndPoint, { json: user_data }, function (err, res, body) {
+    request.post(loginEndPoint, { json: userData }, function (err, res, body) {
       console.log('statusCode ' + res.statusCode);
       console.log("res: %j", res);
       if (err) { console.log(err); return console.log(err); }
@@ -87,14 +86,14 @@ app.get('/stream', function (req, res) {
     });
   });
   // if promise have status resolve, we call function, and pass auth0_token by first argument
-  promise.then((auth_token) => {
+  promise.then((authToken) => {
     // object with configuration for streamEndPoint
     var options = {
-      headers: { Authorization: `Bearer ${auth_token}` },
+      headers: { Authorization: `Bearer ${authToken}` },
       https: { rejectUnauthorized: false }
     };
 
-    var evt = new EventSource(streamEndPoint, options);
+    var evt = new eventSource(streamEndPoint, options);
 
     // set handler on onopen event.
     evt.onopen = function () {
@@ -110,7 +109,7 @@ app.get('/stream', function (req, res) {
     evt.on('message', function (msg) {
       console.log('envent received');
       var data = JSON.parse(msg.data);
-      // Check, if data has user picture id, we request this picture from HOS_FACE
+      // Check, if data has user picture id, we request this picture from HOS
       if (data.sensors[0].observs[0].pic) {
         request.get(getImgEndPoint + `/get?id=${data.sensors[0].observs[0].pic}`, options, function (err, response, body) {
           if (err) console.log('Error: ', err);
