@@ -157,7 +157,7 @@ app.get('/stream', function (req, res) {
 // set handler for route /index. handler return file index.html
 app.get('/index', function (req, res) {
   console.log('sendfile');
-  res.sendFile(`${__dirname}/index_tutorial1.html`);
+  res.sendFile(`${__dirname}/index_tutorial_1.html`);
 });
 // start listening port
 app.listen(port, function () {
