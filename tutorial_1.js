@@ -22,7 +22,7 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
 
 
 //@todo check npm on Baidu      @res Tried and installed npm multiple times with new instances created
-//@todo license      @res The ISC license npm uses is 
+//@todo license      @res Added ISC license npm uses 
 //@todo readme.md      @res Added readme file
 //@todo change details      @res Removed all instances of using the words 'Mouth' or 'Face' or related. 
 //@todo config file for user info domain info      @res Striped out the user info to the config.json file
