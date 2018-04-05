@@ -46,7 +46,7 @@ console.log('Start init');
 const config = require("./config.json");
 const request = require('request');
 const express = require('express');
-const EventSource = require('eventsource');
+const eventSource = require('eventsource');
 
 const badPerson = '914f9d75_38ab_4987_86ae_779ff786b319';// Put bad guy's personId here
 //The html page will hightlight the cell when a bad guy is recognized
