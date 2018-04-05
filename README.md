@@ -10,7 +10,7 @@ These instructions will get you a copy of the project up and running on your loc
 This tutorial project has been tested on Ubuntu 16.04 LTS.
 If you haven't installed Node or your Node.js isn't the latest, please do so as follows.
 
-```bash
+```console
 $ sudo apt-get install nodejs
 $ sudo apt-get install npm
 
